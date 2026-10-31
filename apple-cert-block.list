@@ -1,0 +1,43 @@
+#!name = Apple 证书屏蔽验证 (AntiRevoke for Quantumult X)
+#!desc = 精准屏蔽 Apple p12 证书验证，让已过期证书能够继续使用
+#!author = Salem (原版 Loon 插件) / yebuwudong (Quantumult X 移植)
+#!homepage = https://github.com/salem-2007/apple-cert-block
+#!tag = Apple, Certificate, AntiRevoke
+#
+# Quantumult X 用法（复制这一条链接即可）：
+#   Quantumult X -> 分流 -> 引用 -> 添加：
+#   https://raw.githubusercontent.com/yebuwudong/qx-apple-cert-block/main/apple-cert-block.list
+#   标签随意，策略选 reject 或留空，勾选启用
+#
+# 说明：本规则使用 HOST reject，QX 会在 DNS 层直接返回 127.0.0.1，
+#       连接不会建立，因此无需配置 MITM 证书即可生效。
+# ------------------------------------------------------------------
+
+# ===== Apple OCSP =====
+HOST, ocsp.apple.com, reject
+HOST, ocsp2.apple.com, reject
+
+# ===== Apple Validation =====
+HOST, valid.apple.com, reject
+HOST, ppq.apple.com, reject
+HOST, ppq-ext.v.aaplimg.com, reject
+
+# ===== Apple CRL =====
+HOST, crl.apple.com, reject
+HOST, certs.apple.com, reject
+
+# ===== DigiCert =====
+HOST, ocsp.digicert.com, reject
+HOST, ocsp.digicert.cn, reject
+HOST, crl3.digicert.com, reject
+HOST, crl4.digicert.com, reject
+
+# ===== Entrust =====
+HOST, ocsp.entrust.net, reject
+HOST, crl.entrust.net, reject
+
+# ===== Sectigo / USERTrust =====
+HOST, ocsp.sectigo.com, reject
+HOST, crl.sectigo.com, reject
+HOST, ocsp.usertrust.com, reject
+HOST, crl.usertrust.com, reject

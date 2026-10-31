@@ -1,0 +1,3 @@
+ocsp.apple.com
+ocsp2.apple.com
+valid.apple.com
